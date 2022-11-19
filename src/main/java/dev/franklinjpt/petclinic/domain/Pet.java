@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.time.LocalDate;
 
@@ -29,4 +31,18 @@ public class Pet {
     private Character sex;
 
     private String notes;
+
+    @Column(name = "species_id")
+    private Integer specieId;
+
+    @Column(name = "owners_id")
+    private String ownerId;
+
+    @ManyToOne
+    @JoinColumn(name = "species_id", insertable = false, updatable = false)
+    private Specie specie;
+
+    @ManyToOne
+    @JoinColumn(name = "owners_id", insertable = false, updatable = false)
+    private Owner owner;
 }
