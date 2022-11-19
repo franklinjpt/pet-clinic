@@ -17,7 +17,7 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @Table(name = "pets")
-public class Pet {
+public class Pet implements DomainEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

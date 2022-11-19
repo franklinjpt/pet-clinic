@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "owners")
-public class Owner {
+public class Owner implements DomainEntity<String>{
 
     @Id
     private String id;
