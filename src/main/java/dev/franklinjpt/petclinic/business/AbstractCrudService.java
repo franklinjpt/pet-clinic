@@ -1,6 +1,7 @@
 package dev.franklinjpt.petclinic.business;
 
 import dev.franklinjpt.petclinic.domain.DomainEntity;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.persistence.EntityExistsException;
@@ -35,7 +36,12 @@ public abstract class AbstractCrudService<E extends DomainEntity<K>, K> {
             throw new EntityExistsException("Entity" + entity + "does not exist");
     }
 
-    public void deleteById(K id) {
-        repository.deleteById(id);
+    public boolean deleteById(K id) {
+        try {
+            repository.deleteById(id);
+            return true;
+        } catch (EmptyResultDataAccessException e) {
+            return false;
+        }
     }
 }

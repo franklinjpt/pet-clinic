@@ -1,9 +1,9 @@
 package dev.franklinjpt.petclinic.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,5 +27,6 @@ public class Specie implements DomainEntity<Integer> {
     private String breed;
 
     @OneToMany(mappedBy = "specie")
+    @JsonIgnore
     private List<Pet> pets;
 }

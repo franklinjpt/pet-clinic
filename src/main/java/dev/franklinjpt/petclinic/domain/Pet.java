@@ -1,5 +1,6 @@
 package dev.franklinjpt.petclinic.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,10 +40,12 @@ public class Pet implements DomainEntity<Long> {
     private String ownerId;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "species_id", insertable = false, updatable = false)
     private Specie specie;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "owners_id", insertable = false, updatable = false)
     private Owner owner;
 }
